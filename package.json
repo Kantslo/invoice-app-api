@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node build/server.js",
+    "build:watch": "babel src --out-dir build --extensions .ts --copy-files --watch",
+    "build:prod": "babel src --out-dir build --extensions .ts --copy-files --minified"
   },
   "author": "Giorgi Kantsliani",
   "license": "ISC",
@@ -17,5 +20,13 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.0",
     "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.6",
+    "@babel/core": "^7.24.6",
+    "@babel/preset-env": "^7.24.6",
+    "@babel/preset-typescript": "^7.24.6",
+    "@types/express": "^4.17.21",
+    "babel-plugin-module-resolver": "^5.0.2"
   }
 }
