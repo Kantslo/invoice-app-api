@@ -79,6 +79,11 @@ const invoiceSchema = new Schema({
       require: true,
     },
   },
+  creator: {
+    type: mongoose.Types.ObjectId,
+    ref: "User",
+    require: true,
+  },
 });
 
 const Invoice = mongoose.model("Invoice", invoiceSchema);
