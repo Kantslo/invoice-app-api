@@ -1,15 +1,21 @@
 import mongoose, { Schema } from "mongoose";
 
-const userSchema = new Schema({
+import { UserType } from "src/types/user-types";
+
+const userSchema = new Schema<UserType>({
+  firstname: {
+    type: String,
+    require: true,
+  },
+  lastname: {
+    type: String,
+    require: true,
+  },
   email: {
     type: String,
     require: true,
   },
   password: {
-    type: String,
-    require: true,
-  },
-  name: {
     type: String,
     require: true,
   },
