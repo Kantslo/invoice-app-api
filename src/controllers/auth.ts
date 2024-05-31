@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import User from "src/models/user.js";
 import userSchema from "src/schemas/user.js";
 
-export const createUser = async (
+export const signup = async (
   req: Request,
   res: Response,
   _next: NextFunction
