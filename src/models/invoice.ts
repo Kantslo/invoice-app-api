@@ -1,10 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
 const invoiceSchema = new Schema({
-  id: {
-    type: mongoose.Types.ObjectId,
-    require: true,
-  },
   billFrom: {
     streetAdress: {
       type: String,
@@ -71,10 +67,6 @@ const invoiceSchema = new Schema({
       require: true,
     },
     price: {
-      type: Number,
-      require: true,
-    },
-    total: {
       type: Number,
       require: true,
     },
