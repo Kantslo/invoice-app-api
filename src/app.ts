@@ -1,9 +1,15 @@
-import express from "express";
 import bodyParser from "body-parser";
+import express from "express";
+import dotenv from "dotenv";
 import cors from "cors";
 
+import swaggerMiddleware from "./middlewares/swagger.js";
+import errorHandler from "./controllers/error.js";
+import connectToMongo from "./config/connect.js";
 import authRoutes from "./routes/auth.js";
-import errorHandler from "./controllers/error-handler.js";
+
+dotenv.config();
+connectToMongo();
 
 const app = express();
 
@@ -15,4 +21,6 @@ app.use("/", authRoutes);
 
 app.use(errorHandler);
 
-app.listen(3000);
+app.use("/", ...swaggerMiddleware);
+
+app.listen(process.env.PORT || 3001);
