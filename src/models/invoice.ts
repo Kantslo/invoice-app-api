@@ -2,19 +2,19 @@ import mongoose, { Schema } from "mongoose";
 
 const invoiceSchema = new Schema({
   billFrom: {
-    streetAdress: {
+    senderStreetAddress: {
       type: String,
       require: true,
     },
-    city: {
+    senderCity: {
       type: String,
       require: true,
     },
-    postCode: {
+    senderPostCode: {
       type: String,
       require: true,
     },
-    country: {
+    senderCountry: {
       type: String,
       require: true,
     },
