@@ -5,19 +5,19 @@ import { UserType } from "../types/user-types.js";
 const userSchema = new Schema<UserType>({
   firstname: {
     type: String,
-    require: true,
+    required: true,
   },
   lastname: {
     type: String,
-    require: true,
+    required: true,
   },
   email: {
     type: String,
-    require: true,
+    required: true,
   },
   password: {
     type: String,
-    require: true,
+    required: true,
   },
   invoices: [
     {
