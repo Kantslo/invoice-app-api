@@ -1,83 +1,91 @@
-import mongoose, { Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 
-const invoiceSchema = new Schema({
-  billFrom: {
-    senderStreetAddress: {
-      type: String,
-      require: true,
-    },
-    senderCity: {
-      type: String,
-      require: true,
-    },
-    senderPostCode: {
-      type: String,
-      require: true,
-    },
-    senderCountry: {
-      type: String,
-      require: true,
-    },
+const itemSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
   },
-  billTo: {
-    clientName: {
-      type: String,
-      require: true,
-    },
-    clientEmail: {
-      type: String,
-      require: true,
-    },
-    streetAddress: {
-      type: String,
-      require: true,
-    },
-    city: {
-      type: String,
-      require: true,
-    },
-    postCode: {
-      type: String,
-      require: true,
-    },
-    country: {
-      type: String,
-      require: true,
-    },
-    invoiceDate: {
-      type: Date,
-      require: true,
-    },
-    paymentTerms: {
-      type: String,
-      require: true,
-    },
-    projectDescription: {
-      type: String,
-      require: true,
-    },
+  quantity: {
+    type: Number,
+    required: true,
   },
-  itemList: {
-    itemName: {
-      type: String,
-      require: true,
-    },
-    quantity: {
-      type: Number,
-      require: true,
-    },
-    price: {
-      type: Number,
-      require: true,
-    },
+  price: {
+    type: Number,
+    required: true,
   },
-  creator: {
-    type: mongoose.Types.ObjectId,
-    ref: "User",
-    require: true,
+  total: {
+    type: Schema.Types.Number,
+    required: true,
   },
 });
 
-const Invoice = mongoose.model("Invoice", invoiceSchema);
+const invoiceSchema = new Schema({
+  createdAt: {
+    type: Schema.Types.String,
+    required: true,
+  },
+  paymentDue: {
+    type: Schema.Types.String,
+    required: true,
+  },
+  description: {
+    type: Schema.Types.String,
+    required: true,
+  },
+  paymentTerms: {
+    type: Schema.Types.String,
+    required: true,
+  },
+  status: {
+    type: Schema.Types.String,
+    required: true
+  },
+  senderAddress: new Schema({
+    streetAddress: {
+      type: Schema.Types.String,
+      required: true,
+    },
+    city: {
+      type: Schema.Types.String,
+      required: true,
+    },
+    postCode: {
+      type: Schema.Types.String,
+      required: true,
+    },
+    country: {
+      type: Schema.Types.String,
+      required: true,
+    },
+  }),
+  clientAddress: new Schema({
+    street: {
+      type: Schema.Types.String,
+      required: true,
+    },
+    city: {
+      type: Schema.Types.String,
+      required: true,
+    },
+    postCode: {
+      type: Schema.Types.String,
+      required: true,
+    },
+    country: {
+      type: Schema.Types.String,
+      required: true,
+    },
+  }),
+  items: {
+    type: [itemSchema],
+    required: true,
+  },
+  total: {
+    type: Schema.Types.Number,
+    required: true,
+  },
+});
+
+const Invoice = model("Invoice", invoiceSchema);
 
 export default Invoice;
